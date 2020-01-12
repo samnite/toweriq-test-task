@@ -8,6 +8,7 @@
     "node": true
   },
   "rules": {
+    "no-prototype-builtins": "off",
     "camelcase": "off",
     "no-unused-vars": "off",
     "react/destructuring-assignment": "off",
