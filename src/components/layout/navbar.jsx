@@ -17,25 +17,10 @@ const StyledNavbar = styled.nav`
   span {
     color: var(--primary-hover-color) !important;
   }
-  ul {
-    display: flex;
-    list-style: none;
-    li {
-      a {
-        cursor: pointer;
-        text-decoration: none;
-        border: #fff;
-        color: #ccc;
-        transition: all 0.5s;
-        padding: 0.75rem 0.5rem;
-        margin: 0 0.25rem;
-        border-radius: 5px;
-        &:hover {
-          background: var(--primary-color);
-        }
-      }
-    }
+  h1 {
+    color: #fff;
   }
+
   @media (max-width: 768px) {
     justify-content: center;
     ul {

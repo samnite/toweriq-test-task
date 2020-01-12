@@ -47,17 +47,13 @@ class Home extends React.Component {
     this.setState({ currentPage: pageNumber });
   };
 
-  randomUser() {
-    const random = Math.floor(Math.random() * 6) + 1;
-  }
-
   render() {
-    const users = this.props.users;
-    const indexOfLastPost = this.state.currentPage * this.state.usersPerPage;
-    const indexOfFirstPost = indexOfLastPost - this.state.usersPerPage;
+    const { users } = this.props;
+    const { currentPage, usersPerPage, randomUser } = this.state;
+    const indexOfLastPost = currentPage * usersPerPage;
+    const indexOfFirstPost = indexOfLastPost - usersPerPage;
     const currentUsers = this.state.users.slice(indexOfFirstPost, indexOfLastPost);
     if (this.state.users === []) return <p>Loading...</p>;
-    const rndUsr = this.state.randomUser ? this.state.randomUser : null;
     return (
       <StyledGrid>
         <div>
@@ -65,12 +61,14 @@ class Home extends React.Component {
           <Pagination
             paginate={this.paginate}
             totalUsers={users.length}
-            usersPerPage={this.state.usersPerPage}
+            usersPerPage={usersPerPage}
           />
         </div>
         <div>
           <p>Random User:</p>
-          {this.state.randomUser.name} {this.state.randomUser.surname}
+          <h3>
+            {randomUser.name} {randomUser.surname}
+          </h3>
         </div>
       </StyledGrid>
     );
