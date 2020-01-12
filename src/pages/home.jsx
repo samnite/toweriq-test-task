@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getUsers } from '../store/actions/data-actions';
 import Users from '../components/users';
 import Pagination from '../components/pagination';
@@ -32,10 +33,9 @@ class Home extends React.Component {
     this.props.getUsers();
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps, nextState) {
     if (nextProps.users !== this.props.users) {
       this.setState({ users: nextProps.users });
-      console.log(this.state.users);
     }
     setInterval(() => {
       const random = Math.floor(Math.random() * 19);
@@ -74,6 +74,11 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  users: PropTypes.array.isRequired,
+  getUsers: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   users: state.data.users,
