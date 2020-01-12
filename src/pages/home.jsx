@@ -50,9 +50,9 @@ class Home extends React.Component {
   render() {
     const { users } = this.props;
     const { currentPage, usersPerPage, randomUser } = this.state;
-    const indexOfLastPost = currentPage * usersPerPage;
-    const indexOfFirstPost = indexOfLastPost - usersPerPage;
-    const currentUsers = this.state.users.slice(indexOfFirstPost, indexOfLastPost);
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentUsers = this.state.users.slice(indexOfFirstUser, indexOfLastUser);
     if (this.state.users === []) return <p>Loading...</p>;
     return (
       <StyledGrid>
