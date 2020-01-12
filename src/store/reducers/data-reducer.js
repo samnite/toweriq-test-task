@@ -1,8 +1,9 @@
-import { SET_USERS } from '../types';
+import { SET_LOADING, SET_USERS } from '../types';
 import { createReducer } from '../redux';
 
 const initialState = {
   users: null,
+  loading: false,
 };
 
 export default createReducer(initialState, {
@@ -10,6 +11,13 @@ export default createReducer(initialState, {
     return {
       ...state,
       users: payload,
+      loading: false,
+    };
+  },
+  [SET_LOADING]: state => {
+    return {
+      ...state,
+      loading: true,
     };
   },
 });

@@ -5,11 +5,8 @@ import Home from './pages/home';
 const App = () => {
   return (
     <>
-
-        <Navbar />
-
-
-
+      <Navbar />
+      <Home />
     </>
   );
 };
