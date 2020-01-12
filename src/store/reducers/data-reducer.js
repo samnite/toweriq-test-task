@@ -2,7 +2,7 @@ import { SET_LOADING, SET_USERS } from '../types';
 import { createReducer } from '../redux';
 
 const initialState = {
-  users: null,
+  users: [],
   loading: false,
 };
 
