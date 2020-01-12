@@ -9,9 +9,6 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-gap: 1rem;
-`;
-
-const StyledContainer = styled.div`
   max-width: 920px;
   margin: 2rem auto;
   padding: 0 2rem;
@@ -24,6 +21,10 @@ class Home extends React.Component {
       users: [],
       currentPage: 1,
       usersPerPage: 5,
+      randomUser: {
+        name: null,
+        surname: null,
+      },
     };
   }
 
@@ -34,12 +35,21 @@ class Home extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.users !== this.props.users) {
       this.setState({ users: nextProps.users });
+      console.log(this.state.users);
     }
+    setInterval(() => {
+      const random = Math.floor(Math.random() * 19);
+      this.setState({ randomUser: this.props.users[random] });
+    }, 8000);
   }
 
   paginate = pageNumber => {
     this.setState({ currentPage: pageNumber });
   };
+
+  randomUser() {
+    const random = Math.floor(Math.random() * 6) + 1;
+  }
 
   render() {
     const users = this.props.users;
@@ -47,6 +57,7 @@ class Home extends React.Component {
     const indexOfFirstPost = indexOfLastPost - this.state.usersPerPage;
     const currentUsers = this.state.users.slice(indexOfFirstPost, indexOfLastPost);
     if (this.state.users === []) return <p>Loading...</p>;
+    const rndUsr = this.state.randomUser ? this.state.randomUser : null;
     return (
       <StyledGrid>
         <div>
@@ -57,7 +68,10 @@ class Home extends React.Component {
             usersPerPage={this.state.usersPerPage}
           />
         </div>
-        <div>blabla</div>
+        <div>
+          <p>Random User:</p>
+          {this.state.randomUser.name} {this.state.randomUser.surname}
+        </div>
       </StyledGrid>
     );
   }
