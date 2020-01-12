@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - Fake JSON server to fetch data (json-server package)
 - Pagination (5 users per page)
-- Display random user (one user)
+- Display random user (every 8 second)
 - Styling
 - Not used React Hooks and any framework to pagination
 
